@@ -14,10 +14,9 @@ function getJWT($otentikasiHeader)
     if (is_null($otentikasiHeader)) {
         throw new Exception("JWT Authentication need Token");
     }
-    return explode(".", $otentikasiHeader)[1];
+    return explode(" ", $otentikasiHeader)[1];
 }
 
-//validasi JWT yang dikirim oleh client
 function validateJWT($encodedToken)
 {
     $key = getenv('JWT_SECRET_KEY');
